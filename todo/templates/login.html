@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login Page 
+{% endblock %}
+
+
+{% block content %}
+ 
+<div class = "container">
+     
+  
+
+    <form action="{{ url_for('login') }}" method="post">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" name = 'username' id="username"  placeholder="Enter username">
+            
+
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" name = "password" id="exampleInputPassword1" placeholder="Password">
+        </div>
+      
+        <button type="submit" class="btn btn-primary">Log In</button>
+      </form>
+  </div>
+   
+   {{data}}
+  {% endblock %}

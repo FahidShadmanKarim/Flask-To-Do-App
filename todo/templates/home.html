@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% include 'includes/add_task.html' %}
+
+{% block content %}
+
+
+<div></div>
+<h2 >Task List <button class="btn btn-primary float-right" data-toggle="modal" data-target="#myModal">Add Task</button></h2>
+
+<table class="table table-hover table-dark">
+  <thead>
+      <tr>
+          <!-- Your Columns HERE -->
+          <th scope="col">Task</th>
+          <th scope="col">Start Date</th>
+          <th scope="col">Due Date</th>
+          <th scope="col">Create</th>
+          <th scope="col">Delete</th>
+      </tr>
+  </thead>
+  <tbody>
+      <!-- Your rows inside the table HERE: -->
+ 
+       {% for item in data %}
+          <tr>
+              <td>{{ item[1] }}</td>
+              <td>{{ item[2] }}</td>
+              <td>{{ item[3] }}</td>
+              <td>
+                <a href="/update/{{ item[0] }}" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modaledit{{item[0]}}">Edit</a>
+              </td>
+              <td>
+              
+                <a href="/delete/{{ item[0] }}" onclick="return confirm('Are Sure Want To Deleted ?')" class="btn btn-danger btn-sm">Delete</a>
+              </td>
+
+          </tr>
+          
+          <div id="modaledit{{item[0]}}" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+       
+                    <div class="modal-header">
+                        <h5 class="modal-title text-primary" style="align-content: center;">Update Student Details</h5>    
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      
+    
+                    <div class="modal-body">
+                        
+                        <form action="/update/{{ item[0] }}" method="POST">
+                            <input type="hidden" name="id" value="{{item[0]}}">
+                            <div class="form-group">
+                              <label>Enter Task</label>
+                              <input value="{{item[1]}}" type="text" name="task" class="form-control" id="exampleFormControlInput1" placeholder="Enter Task">
+                            </div>
+    
+                            <div class="form-group">
+                                <label>Start Date</label>
+                                <input value="{{item[2]}}" type="date" name="start" class="form-control" id="exampleFormControlInput1" placeholder="Enter Start Date">
+                            </div>
+    
+                            <div class="form-group">
+                                <label>End Date</label>
+                                <input value="{{item[3]}}" name="end" type="date" class="form-control" id="exampleFormControlInput1" placeholder="Enter End Date">
+                              </div>
+    
+                              <button type="submit" class="btn btn-success mb-2">Update</button>
+                         
+                          </form>
+    
+    
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
+       
+       {% endfor %}
+   
+  </tbody>
+</table>
+{% endblock %}

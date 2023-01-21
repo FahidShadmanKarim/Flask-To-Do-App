@@ -1,0 +1,40 @@
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title text-primary" style="align-content: center;">Please Add New Task</h5>    
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              
+
+            <div class="modal-body">
+                
+                <form action="url_for('insert_page') }}" method="POST">
+                    <div class="form-group">
+                      <label>Task </label>
+                      <input type="text" name="task" class="form-control" id="exampleFormControlInput1" placeholder="Enter Task">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" name="start_date" class="form-control" id="exampleFormControlInput1" placeholder="Enter Start Date">
+                    </div>
+
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date" name="end_date" class="form-control" id="exampleFormControlInput1" placeholder="Enter End Date">
+                    </div>
+
+                
+                      <button type="submit" class="btn btn-primary mb-2">Save</button>
+                 
+                  </form>
+            </div>
+        </div>
+    </div>
+
+</div>
